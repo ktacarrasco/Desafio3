@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Clase3</string>
+    <string name="pregunta">Pregunta</string>
+    <string name="categoria">Categoria</string>
+    <string name="dificultad">Dificultad</string>
+    <string name="imagenlogo">imagenlogo</string>
+    <string name="ver_respuesta">VER RESPUESTA</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
