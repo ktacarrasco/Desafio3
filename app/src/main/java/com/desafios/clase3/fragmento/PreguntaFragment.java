@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.desafios.clase3.R;
 
@@ -16,12 +19,18 @@ import com.desafios.clase3.R;
  * Use the {@link PreguntaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+
 public class PreguntaFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final String ARG_PARAM3 = "param3";
+    int radioButtonValue = 0;
+    private RadioGroup grupoRespuestasView;
+    private RadioButton respuestaUno, respuestaDos;
+    private TextView pregunta ,categoria,dificultad;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -61,6 +70,17 @@ public class PreguntaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pregunta, container, false);
+        View view = inflater.inflate(R.layout.fragment_pregunta, container, false);
+        initializeViews(view);
+        pregunta.setText(mParam1);
+        categoria.setText(mParam2);
+        return view;
+    }
+
+    private void initializeViews(View view){
+        pregunta= view.findViewById(R.id.pregunta);
+        categoria = view.findViewById(R.id.categoria);
+        dificultad = view.findViewById(R.id.Dificultad);
+
     }
 }

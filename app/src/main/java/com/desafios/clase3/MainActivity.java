@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.desafios.clase3.api.Api;
 import com.desafios.clase3.api.RetrofitClient;
+import com.desafios.clase3.fragmento.PreguntaFragment;
 import com.desafios.clase3.model.RespuestaApi;
 
 import retrofit2.Call;
@@ -16,22 +17,24 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-        private TextView pregunta ,categoria,dificultad;
+private String pregunta, categoria;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initializeViews();
+
+
+        //Retrofit
         Api api = RetrofitClient.getRetrofit().create(Api.class);
         Call<RespuestaApi> call = api.getAllQuestions();
         call.enqueue(new Callback<RespuestaApi>() {
             @Override
             public void onResponse(Call<RespuestaApi> call, Response<RespuestaApi> response) {
                // response.body().getResponseCode();
-                pregunta.setText(response.body().getResults().get(0).getQuestion());
-                categoria.setText(response.body().getResults().get(0).getCategory());
-                dificultad.setText(response.body().getResults().get(0).getDifficulty());
-
+                pregunta = response.body().getResults().get(0).getQuestion();
+                categoria = response.body().getResults().get(0).getCategory();
+                //dificultad = response.body().getResults().get(0).getDifficulty();
+                InitializeFragment(pregunta,categoria);
 
             }
 
@@ -44,11 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initializeViews(){
-        pregunta= findViewById(R.id.pregunta);
-        categoria = findViewById(R.id.categoria);
-        dificultad = findViewById(R.id.Dificultad);
+        private void InitializeFragment(String pregunta, String categoria){
+            PreguntaFragment preguntaFragment = PreguntaFragment.newInstance(pregunta,categoria);
+            getSupportFragmentManager().beginTransaction().add(R.id.fl1,preguntaFragment,"PREGUNTAFRAGMENTO").commit();
+        }
 
-    }
 
 }
