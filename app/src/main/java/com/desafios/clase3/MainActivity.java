@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-private String pregunta, categoria;
+private String pregunta, categoria, dificultad, correctAnswer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +34,9 @@ private String pregunta, categoria;
                // response.body().getResponseCode();
                 pregunta = response.body().getResults().get(0).getQuestion();
                 categoria = response.body().getResults().get(0).getCategory();
-                //dificultad = response.body().getResults().get(0).getDifficulty();
-                InitializeFragment(pregunta,categoria);
+                dificultad = response.body().getResults().get(0).getDifficulty();
+                correctAnswer = response.body().getResults().get(0).getCorrect_answer();
+                InitializeFragment(pregunta,categoria, dificultad, correctAnswer);
 
             }
 
@@ -48,8 +49,8 @@ private String pregunta, categoria;
 
     }
         //este metodo inicializa y añade un fragmento
-        private void InitializeFragment(String pregunta, String categoria){
-            PreguntaFragment preguntaFragment = PreguntaFragment.newInstance(pregunta,categoria,categoria);
+        private void InitializeFragment(String pregunta, String categoria, String dificultad, String correctAnswer){
+            PreguntaFragment preguntaFragment = PreguntaFragment.newInstance(pregunta,categoria,dificultad,correctAnswer);
             getSupportFragmentManager().beginTransaction().add(R.id.fl1,preguntaFragment,"PREGUNTAFRAGMENTO").commit();
         }
 

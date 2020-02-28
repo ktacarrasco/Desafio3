@@ -30,15 +30,16 @@ public class PreguntaFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final String ARG_PARAM3 = "param3";
-    int radioButtonValue = 0;
+    private static final String ARG_PARAM4 = "param4";
 
-    private RadioGroup grupoRespuestasView;
+    private RadioGroup grupoRespuestas;
     private RadioButton respuestaUno, respuestaDos;
     private TextView pregunta ,categoria,dificultad;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private String mParam3;
+    private String mParam4;
     private Button button;
 
     public PreguntaFragment() {
@@ -54,12 +55,13 @@ public class PreguntaFragment extends Fragment {
      * @return A new instance of fragment PreguntaFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PreguntaFragment newInstance(String param1, String param2, String param3) {
+    public static PreguntaFragment newInstance(String param1, String param2, String param3, String param4) {
         PreguntaFragment fragment = new PreguntaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         args.putString(ARG_PARAM3, param3);
+        args.putString(ARG_PARAM4, param4);
         fragment.setArguments(args);
         return fragment;
     }
@@ -71,7 +73,7 @@ public class PreguntaFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
             mParam3 = getArguments().getString(ARG_PARAM3);
-
+            mParam4 = getArguments().getString(ARG_PARAM4);
         }
     }
 
@@ -84,6 +86,16 @@ public class PreguntaFragment extends Fragment {
         pregunta.setText(mParam1);
         categoria.setText(mParam2);
         dificultad.setText(mParam3);
+        respuestaUno.setText(mParam4);
+       // respuestaDos.setText(respuestasIncorrectas.get(x));
+
+       // grupoRespuestas.setOnCheckedChangeListener((group, checkedId) -> {
+       //     if(respuestaUno.isChecked()) {
+       //         valorBoton = 1;
+       //     } else if (respuestaDos.isChecked()){
+       //         valorBoton = 0;
+       //     }
+       // });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +112,9 @@ public class PreguntaFragment extends Fragment {
         categoria = view.findViewById(R.id.categoria);
         dificultad = view.findViewById(R.id.Dificultad);
         button = view.findViewById(R.id.btn);
+        grupoRespuestas = view.findViewById(R.id.radioGrupoRespuestas);
+        respuestaUno = view.findViewById(R.id.radioRespuestaUno);
+        respuestaDos = view.findViewById(R.id.radioRespuestaDos);
 
     }
 
