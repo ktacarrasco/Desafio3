@@ -47,9 +47,9 @@ private String pregunta, categoria;
        // question.setText("hola");
 
     }
-
+        //este metodo inicializa y añade un fragmento
         private void InitializeFragment(String pregunta, String categoria){
-            PreguntaFragment preguntaFragment = PreguntaFragment.newInstance(pregunta,categoria);
+            PreguntaFragment preguntaFragment = PreguntaFragment.newInstance(pregunta,categoria,categoria);
             getSupportFragmentManager().beginTransaction().add(R.id.fl1,preguntaFragment,"PREGUNTAFRAGMENTO").commit();
         }
 
