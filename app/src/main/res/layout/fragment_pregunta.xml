@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragmento.PreguntaFragment">
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-    <ImageView
-        android:id="@+id/imagenlogo"
-        android:layout_width="345dp"
-        android:layout_height="83dp"
-        android:layout_marginStart="143dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/imagenlogo"
-        android:src="@drawable/ic_logodl"
-        app:layout_constraintBottom_toTopOf="@+id/tituloPregunta"
-        app:layout_constraintEnd_toEndOf="@+id/tituloPregunta"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="@+id/tituloPregunta"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
-    <TextView
+        <ImageView
+            android:id="@+id/imagenlogo"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/imagenlogo"
+            android:src="@drawable/ic_logodl"
+            app:layout_constraintBottom_toTopOf="@+id/tituloPregunta"
+            app:layout_constraintEnd_toEndOf="@+id/tituloPregunta"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="@+id/tituloPregunta"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
         android:id="@+id/tituloPregunta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -114,8 +128,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/btnConsultaRespuesta"
         app:layout_constraintEnd_toEndOf="@+id/btnConsultaRespuesta"
         app:layout_constraintStart_toStartOf="@+id/btnConsultaRespuesta"
@@ -136,8 +150,8 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/btnConsultaRespuesta"
-        android:layout_width="212dp"
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
         android:layout_height="122dp"
         android:layout_marginStart="120dp"
         android:layout_marginTop="8dp"
@@ -152,5 +166,9 @@
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGrupoRespuestas" />
+    </LinearLayout>
+</ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

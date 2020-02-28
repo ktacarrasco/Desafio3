@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.desafios.clase3.R;
 
@@ -34,6 +36,7 @@ public class PreguntaFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Button button;
 
     public PreguntaFragment() {
         // Required empty public constructor
@@ -74,6 +77,15 @@ public class PreguntaFragment extends Fragment {
         initializeViews(view);
         pregunta.setText(mParam1);
         categoria.setText(mParam2);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Ahora pasa esto", Toast.LENGTH_SHORT).show();
+                pasarAlotrofragmento();
+
+            }
+        });
         return view;
     }
 
@@ -81,6 +93,15 @@ public class PreguntaFragment extends Fragment {
         pregunta= view.findViewById(R.id.pregunta);
         categoria = view.findViewById(R.id.categoria);
         dificultad = view.findViewById(R.id.Dificultad);
+        button = view.findViewById(R.id.btn);
 
     }
+
+    private void pasarAlotrofragmento(){
+        SegundoFragment segundofragmento = SegundoFragment.newInstance("","");
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl1,segundofragmento,"SECONDFRAGMENT")
+                .addToBackStack("SECONDFRAGMENT").commit();
+
+    }
+
 }

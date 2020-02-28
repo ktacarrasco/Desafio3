@@ -26,6 +26,7 @@ private String pregunta, categoria;
 
         //Retrofit
         Api api = RetrofitClient.getRetrofit().create(Api.class);
+        //api.get es el metodo que esta en la interface
         Call<RespuestaApi> call = api.getAllQuestions();
         call.enqueue(new Callback<RespuestaApi>() {
             @Override
